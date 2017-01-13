@@ -1,0 +1,7 @@
+- name: Hello World Sample
+  hosts: 10.10.4.9
+  tasks:
+    - name: Hello Message
+      debug:
+        msg: "Hello World!"
+
