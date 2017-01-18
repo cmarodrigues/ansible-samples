@@ -12,6 +12,7 @@
              backup=yes
              regexp='^server\s+\S+\s*(.*)'
              replace='server 216.239.35.4 \1'
+     when: check_line_status_ntp !=0
      notify:
      - Restart ntpd
   handlers:
