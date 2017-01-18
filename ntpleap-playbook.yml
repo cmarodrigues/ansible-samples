@@ -4,3 +4,16 @@
    - name: Test for line "server 216.239.35.4"
      command: grep -q "^server 216.239.35.4" /etc/ntp.conf
      register: check_line_status_ntp
+     ignore_errors: True
+   - name: Test NTP
+     command:  ntpdate -d 216.239.35.0
+   - name: Apply Google NTP Servers ntp.conf
+     replace: dest=/etc/ntp.conf
+             backup=yes
+             regexp='^server\s+\S+\s*(.*)'
+             replace='server 216.239.35.4 \1'
+     notify:
+     - Restart ntpd
+  handlers:
+    - name: Restart ntpd
+      service: name=ntpd state=restarted
