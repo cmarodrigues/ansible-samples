@@ -1,7 +1,7 @@
 - name: Hello World Sample
   hosts: all
   tasks:
-     - name: Setup
+   - name: Setup
      setup:
    - name: Test for line "server 216.239.35.4"
      command: grep -q "^server 216.239.35.4" /etc/ntp.conf
