@@ -1,0 +1,8 @@
+- hosts: all
+  gather_facts: no
+  roles:
+  - { }
+  tasks:
+   - name: Test for line "server 216.239.35.4"
+    command: grep -q "^server 216.239.35.4" /etc/ntp.conf
+    register: check_line_status_ntp
